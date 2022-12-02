@@ -18,7 +18,7 @@ namespace Bank {
     // //    Bank::Account sender;
     // //    Bank::Account receiver;
     //    sender.withdraw_balance(amount, id);
-    //    receiver.add_balance(amount, id);
+    //    receiver.add_balance(amount, to_id);
 
   }
 
