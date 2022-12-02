@@ -1,69 +1,32 @@
-#include <mbed.h>
+#include "bank.h"
+#include "account.h"
 
+namespace Bank {
 
-Thread thr_clock;
-// Thread thr_betaalterminal;
-// Thread thr_bancontact;
-// Thread thr_belfius;
-// Thread thr_bank1;
-
-// | Thread | OOP            |
-// |--------|----------------|
-// | Klok   | Betaalterminal |
-// |        | Bancontact     |
-// |        | Bank           |
-
- 
-
-void klok() {
-    // 24u klok in 5 minuten simuleren:
-    // Meeste betalingen tussen 7u en 20u
-    // Overzetting geld tussen banken: 20u - 7u
-    uint8_t clock = 0;
-    while (true)
-    {
-        if (clock < 24) {
-            printf("%d:00\n\r", clock); // Als het klaar is niet meer printen
-            ThisThread::sleep_for(1s);
-            clock++;
-        } else {
-            clock = 0;
-        }
+  void Validation::propose_payment(double amount, int id, int to_id) {
+    this->amount = amount;
+    this->id = id;
+    this->to_id = to_id; 
+    
+    if (get_isValid()) {
+        complete_payment();
     }
-}
+  }
 
-// void betaling() { // in OOP class
-// // Hier betaalt de consument, automatisch komt er "Even geduld" na betaling:
-// // --- Betaling wordt verstuurd naar Bancontact server
-// // --- Wachten op antwoord van Bancontact server
-    
-// }
+  void Validation::complete_payment(void) {
+      // geld overzetten van account naar ander account
+    // //    Bank::Account sender;
+    // //    Bank::Account receiver;
+    //    sender.withdraw_balance(amount, id);
+    //    receiver.add_balance(amount, id);
 
-// void bancontact_server(){ // in OOP class
-// // Bancontact verwerkt de betaling: 
-// // --- Stuurt betaalpropositie door naar de bank
-// // --- wacht op antwoord van bank: betaling goedgekeurd/afgekeurd
-// // --- Stuurt terug naar terminal: Verwerkt/saldo ontoereikend
-    
-// }
+  }
 
-// void kbc(){ // in OOP class
-// // Ontvangt betaalpropositie van Bancontact:
-// // --- Als account van betaler genoeg geld heeft, betaling accepteren en geld aftrekken
-// // --- Stuur naar Bancontact wanneer de betaling is goedgekeurd of afgekeurd.
-// // --- Afgetrokken geld van consument doorsturen naar bank van verkoper:
-// // --- --- hebben ze dezelfde bank?: instant
-// // --- --- Andere bank?: s'nachts doorsturen
-
-// void belfius(){
-// // = kbc
-// }
-
-int main() {
-    // thr_betaalterminal.start(betaling);
-    // thr_bancontact.start(bancontact_server);
-    thr_clock.start(klok);
-
-
-    return 0;
-}
+  bool Validation::get_isValid(void) const {
+      double balance = 50.00; //Tijdelijke variabel, die gaan we moeten veranderen naar sender.get_balance()
+      if (amount <= balance) {
+          return true;
+      }
+    return false;
+  }
+};
