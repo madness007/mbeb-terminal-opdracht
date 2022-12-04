@@ -3,42 +3,30 @@
 #include <chrono>
 #include "bank.h"
 #include "account.h"
+#include "terminal.h"
+#include "terminalServer.h"
 
-rtos::Thread thread1;
-rtos::Thread thread2;
-rtos::Thread thread3;
-rtos::Thread thread4;
+rtos::Thread thr_terminalServer1;
+rtos::Thread thr_terminalServer2;
+rtos::Thread thr_terminalServer3;
+rtos::Thread thr_belfius;
+rtos::Thread thr_kbc;
 
-rtos::Semaphore _sem(3);
-int counter = 0;
+Bank::TerminalServer terminalServer1;
+Bank::TerminalServer terminalServer2;
+Bank::TerminalServer terminalServer3;
 
-void client_work(void) {
-    printf("client is working on server\n");
-    counter++;
-    printf("active clients: %d \n", counter);
-    ThisThread::sleep_for(chrono::seconds(rand()%5));
-    counter--;
-}
-
-void connect(void) {
-    _sem.acquire();
-    client_work();
-    _sem.release();
-}
-
-void client() {
-    while (true) {
-        connect();
-        ThisThread::sleep_for(chrono::seconds(rand()%5));
-    }
-}
-
+Bank::Terminal terminal1(&terminalServer1);
+Bank::Terminal terminal2(&terminalServer1);
+Bank::Terminal terminal3(&terminalServer1);
+Bank::Terminal terminal4(&terminalServer2);
+Bank::Terminal terminal5(&terminalServer2);
+Bank::Terminal terminal6(&terminalServer2);
+Bank::Terminal terminal7(&terminalServer3);
+Bank::Terminal terminal8(&terminalServer3);
+Bank::Terminal terminal9(&terminalServer3);
 
 int main(void) {
-    thread1.start(client);
-    thread2.start(client);
-    thread3.start(client);
-    thread4.start(client);
 
     Bank::Validation kbc; // Betalingsvalidatie testen (mag dan gebruikt worden in een andere class als dit af is)
     kbc.propose_payment(39.99, 1234, 4555);
