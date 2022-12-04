@@ -51,10 +51,10 @@ void casino_terminal() {
   printf("jan balance is %.2f\n", jan.get_balance());
   printf("casino balance is %.2f\n", casino.get_balance());
 
-    
 }
 
 int main(void) {
+    casino_terminal();
     // Banking::Account jan(50, &kbc);
     // kbc.propose_payment(39.99, 1234, 4555);
     // if (kbc.get_isValid()) {
