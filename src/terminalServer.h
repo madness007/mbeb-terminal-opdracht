@@ -8,7 +8,7 @@ namespace Bank {
 
     // Methods
     public:
-
+      TerminalServer();
 
     public:
       bool get_isValid(void) const;
