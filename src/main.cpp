@@ -29,6 +29,12 @@ Banking::Terminal terminal7(&terminalServer3);
 Banking::Terminal terminal8(&terminalServer3);
 Banking::Terminal terminal9(&terminalServer3);
 
+//terminal 1
+// void casino() {
+//     sleep random 1 5min
+//     jan 1000euro
+// }
+
 int main(void) {
 
     // Banking::Bank kbc; // Betalingsvalidatie testen (mag dan gebruikt worden in een andere class als dit af is)
