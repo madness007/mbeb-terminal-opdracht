@@ -1,6 +1,6 @@
 #include "account.h"
 
-namespace Bank {
+namespace Banking {
 
   void Account::create_account(int id) {
     this->id = id;
