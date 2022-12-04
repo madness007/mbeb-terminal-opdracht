@@ -7,15 +7,16 @@ namespace Bank {
 
     // Methods
     public:
-      void payment(double amount, int id, int to_id);
       // set the terminalserver on initialisation
       Terminal(TerminalServer * terminalServer);
+
+      void payment(double amount, int id, int to_id);
 
     public:
 
     // Attributes (instance variables)
     private:
-      TerminalServer _server;
+      TerminalServer * _server;
 
   };
 
