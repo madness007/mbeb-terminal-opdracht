@@ -8,30 +8,22 @@ namespace Banking {
     this->_bankname = bankname;
   }
 
-  void Bank::propose_payment(double amount, int id, int to_id) {
+  int Bank::payment(double amount, int id, int to_id) {
     this->amount = amount;
     this->id = id;
     this->to_id = to_id; 
     
-    if (get_isValid()) {
-        complete_payment();
+    if (get_isValid() == 0) {
+        return 0; //goedgekeurd
     }
+    return 1; //niet goedgekeurd
   }
 
-  void Bank::complete_payment(void) {
-      // geld overzetten van account naar ander account
-    // //    Bank::Account sender;
-    // //    Bank::Account receiver;
-    //    sender.withdraw_balance(amount, id);
-    //    receiver.add_balance(amount, to_id);
-
-  }
-
-  bool Bank::get_isValid(void) const {
+  int Bank::get_isValid(void) const {
       double balance = 50.00; //Tijdelijke variabel, die gaan we moeten veranderen naar sender.get_balance()
       if (amount <= balance) {
-          return true;
+          return 0;
       }
-    return false;
+    return 1;
   }
 };

@@ -8,8 +8,8 @@ namespace Banking {
     // Methods
     public:
       Account(double balance, Bank * bank);
-      void add_balance(double amount, int id);
-      void withdraw_balance(double amount, int id);
+      void add_balance(double amount);
+      void withdraw_balance(double amount);
 
     public:
       double get_balance(void) const;

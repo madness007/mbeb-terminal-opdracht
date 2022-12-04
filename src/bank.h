@@ -1,4 +1,5 @@
 #pragma once
+#include "account.h"
 #include <string>
 
 namespace Banking {
@@ -8,11 +9,10 @@ namespace Banking {
     // Methods
     public:
       Bank(std::string bankname);
-      void propose_payment(double amount, int id, int to_id);
-      void complete_payment(void);
+      int payment(double amount, Account * account, Account * to_account);
 
-    public:
-      bool get_isValid(void) const;
+    private:
+      int get_isValid(void) const;
 
     // Attributes (instance variables)
     private:
@@ -20,6 +20,7 @@ namespace Banking {
       int id;
       int to_id;
       std::string _bankname;
+      
 
   };
 

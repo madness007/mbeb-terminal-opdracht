@@ -8,11 +8,11 @@ namespace Banking {
     this->_bank = bank;
   }
 
-  void Account::add_balance(double amount, int id) {
+  void Account::add_balance(double amount) {
       this->balance += amount; 
   }
 
-  void Account::withdraw_balance(double amount, int id) {
+  void Account::withdraw_balance(double amount) {
     this->balance -= amount;
   }
 

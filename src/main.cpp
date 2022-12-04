@@ -37,7 +37,7 @@ Banking::Terminal terminal9(&terminalServer3);
 
 int main(void) {
 
-    // Banking::Bank kbc; // Betalingsvalidatie testen (mag dan gebruikt worden in een andere class als dit af is)
+    // Banking::Account jan(50, &kbc);
     // kbc.propose_payment(39.99, 1234, 4555);
     // if (kbc.get_isValid()) {
     //     printf("Betaling goedgekeurd.\n\r");
@@ -54,10 +54,10 @@ int main(void) {
 
     // testen van account class
     Banking::Account jan(50, &kbc);
-    jan.add_balance(20, 1);
-    jan.add_balance(50, 1);
+    jan.add_balance(20);
+    jan.add_balance(50);
     printf("jan balance is %.2f\n", jan.get_balance());
-    jan.withdraw_balance(3.99, 1);
+    jan.withdraw_balance(3.99);
     printf("jan balance is %.2f\n", jan.get_balance());
     
 
