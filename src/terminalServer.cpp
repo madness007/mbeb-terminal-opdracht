@@ -9,10 +9,11 @@ namespace Banking {
       
   }
 
-  void TerminalServer::payment(double amount,  Account * account, Account * to_account) {
+  int TerminalServer::payment(double amount,  Account * account, Account * to_account) {
     _sem.acquire();
-    account->bank->payment(amount, account, to_account);
+    int payment = account->bank->payment(amount, account, to_account);
     _sem.release();
+    return payment;
   }
 
 };
