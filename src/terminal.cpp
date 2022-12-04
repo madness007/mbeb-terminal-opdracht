@@ -1,6 +1,6 @@
 #include "terminal.h"
 
-namespace Bank {
+namespace Banking {
 
   Terminal::Terminal(TerminalServer * terminalServer) {
     _server = terminalServer;

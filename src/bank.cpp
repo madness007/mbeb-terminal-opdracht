@@ -1,9 +1,14 @@
 #include "bank.h"
 #include "account.h"
+#include <string>
 
-namespace Bank {
+namespace Banking {
+  
+  Bank::Bank(std::string bankname) {
+    this->_bankname = bankname;
+  }
 
-  void Validation::propose_payment(double amount, int id, int to_id) {
+  void Bank::propose_payment(double amount, int id, int to_id) {
     this->amount = amount;
     this->id = id;
     this->to_id = to_id; 
@@ -13,7 +18,7 @@ namespace Bank {
     }
   }
 
-  void Validation::complete_payment(void) {
+  void Bank::complete_payment(void) {
       // geld overzetten van account naar ander account
     // //    Bank::Account sender;
     // //    Bank::Account receiver;
@@ -22,7 +27,7 @@ namespace Bank {
 
   }
 
-  bool Validation::get_isValid(void) const {
+  bool Bank::get_isValid(void) const {
       double balance = 50.00; //Tijdelijke variabel, die gaan we moeten veranderen naar sender.get_balance()
       if (amount <= balance) {
           return true;

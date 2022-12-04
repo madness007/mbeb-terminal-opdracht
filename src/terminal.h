@@ -1,7 +1,7 @@
 #pragma once
 #include "terminalServer.h"
 
-namespace Bank {
+namespace Banking {
 
   class Terminal {
 

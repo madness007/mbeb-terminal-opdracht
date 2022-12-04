@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Bank {
+namespace Banking {
 
   class Account {
 

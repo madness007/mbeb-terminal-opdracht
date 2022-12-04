@@ -2,7 +2,7 @@
 #include "mbed.h"
 #include "rtos.h"
 
-namespace Bank {
+namespace Banking {
 
   class TerminalServer {
 
