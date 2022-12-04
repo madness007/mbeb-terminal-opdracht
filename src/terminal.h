@@ -1,6 +1,7 @@
 #pragma once
 #include "terminalServer.h"
 #include "account.h"
+#include <string>
 
 namespace Banking {
 
