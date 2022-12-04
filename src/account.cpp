@@ -1,13 +1,11 @@
 #include "account.h"
+#include "bank.h"
 
 namespace Banking {
 
-  void Account::create_account(int id) {
-    this->id = id;
-  }
-
-  void Account::set_balance(double amount, int id) {
-      this->balance = amount;
+  Account::Account(double balance, Bank * bank) {
+    this->balance = balance;
+    this->_bank = bank;
   }
 
   void Account::add_balance(double amount, int id) {
