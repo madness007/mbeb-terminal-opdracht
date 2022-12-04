@@ -1,4 +1,5 @@
 #include "terminal.h"
+#include "terminalServer.h"
 
 namespace Banking {
 
@@ -6,4 +7,7 @@ namespace Banking {
     _server = terminalServer;
   }
 
+  void Terminal::payment(double amount,  Account * account, Account * to_account) {
+    _server->payment(amount, account, to_account);
+  }
 };

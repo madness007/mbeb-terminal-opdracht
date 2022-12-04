@@ -1,5 +1,6 @@
 #pragma once
 #include "terminalServer.h"
+#include "account.h"
 
 namespace Banking {
 
@@ -10,7 +11,7 @@ namespace Banking {
       // set the terminalserver on initialisation
       Terminal(TerminalServer * terminalServer);
 
-      void payment(double amount, int id, int to_id);
+      void payment(double amount,  Account * account, Account * to_account);
 
     public:
 

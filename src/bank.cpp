@@ -8,10 +8,9 @@ namespace Banking {
     this->_bankname = bankname;
   }
 
-  int Bank::payment(double amount, int id, int to_id) {
+  int Bank::payment(double amount,  Account * account, Account * to_account) {
     this->amount = amount;
-    this->id = id;
-    this->to_id = to_id; 
+; 
     
     if (get_isValid() == 0) {
         return 0; //goedgekeurd

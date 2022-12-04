@@ -29,14 +29,27 @@ Banking::Terminal terminal7(&terminalServer3);
 Banking::Terminal terminal8(&terminalServer3);
 Banking::Terminal terminal9(&terminalServer3);
 
+Banking::Account jan(1000, &kbc);
+Banking::Account jef(1500, &kbc);
+Banking::Account jos(50, &kbc);
+Banking::Account mark(100000000, &kbc);
+Banking::Account jeanine(10000, &kbc);
+
+Banking::Account willy(100000000, &belfius);
+Banking::Account john(785, &belfius);
+Banking::Account jacky(-500, &belfius);
+Banking::Account charles(1000000, &belfius);
+Banking::Account piet(15000, &belfius);
+
+Banking::Account casino(100000, &kbc);
+
 //terminal 1
-// void casino() {
-//     sleep random 1 5min
-//     jan 1000euro
-// }
+void casino_terminal() {
+  terminal1.payment(100, &jan, &casino);
+    
+}
 
 int main(void) {
-
     // Banking::Account jan(50, &kbc);
     // kbc.propose_payment(39.99, 1234, 4555);
     // if (kbc.get_isValid()) {
@@ -53,12 +66,12 @@ int main(void) {
     // }
 
     // testen van account class
-    Banking::Account jan(50, &kbc);
-    jan.add_balance(20);
-    jan.add_balance(50);
-    printf("jan balance is %.2f\n", jan.get_balance());
-    jan.withdraw_balance(3.99);
-    printf("jan balance is %.2f\n", jan.get_balance());
+    // Banking::Account jan(50, &kbc);
+    // jan.add_balance(20);
+    // jan.add_balance(50);
+    // printf("jan balance is %.2f\n", jan.get_balance());
+    // jan.withdraw_balance(3.99);
+    // printf("jan balance is %.2f\n", jan.get_balance());
     
 
 

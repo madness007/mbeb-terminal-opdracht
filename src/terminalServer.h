@@ -1,6 +1,7 @@
 #pragma once
 #include "mbed.h"
 #include "rtos.h"
+#include "account.h"
 
 namespace Banking {
 
@@ -9,6 +10,7 @@ namespace Banking {
     // Methods
     public:
       TerminalServer();
+      void payment(double amount,  Account * account, Account * to_account);
 
     public:
       bool get_isValid(void) const;
