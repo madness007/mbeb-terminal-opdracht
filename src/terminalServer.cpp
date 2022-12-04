@@ -2,10 +2,10 @@
 #include "mbed.h"
 #include "rtos.h"
 
-namespace Bank {
+namespace Banking {
 
-  TerminalServer::TerminalServer() {
-    this->_sem = rtos::Semaphore(2);
+  TerminalServer::TerminalServer() : _sem(2) {
+
   }
 
 };
