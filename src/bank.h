@@ -4,6 +4,8 @@
 
 namespace Banking {
 
+  class Account;
+
   class Bank {
 
     // Methods
