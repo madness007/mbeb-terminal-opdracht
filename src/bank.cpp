@@ -9,18 +9,18 @@ namespace Banking {
   }
 
   int Bank::payment(double amount,  Account * account, Account * to_account) {
-    this->amount = amount;
-; 
+
     
-    if (get_isValid() == 0) {
+    if (get_isValid(amount, account) == 0) {
+        account->withdraw_balance(amount);
+        to_account->add_balance(amount); // TODO bank kiezen eerst
         return 0; //goedgekeurd
     }
     return 1; //niet goedgekeurd
   }
 
-  int Bank::get_isValid(void) const {
-      double balance = 50.00; //Tijdelijke variabel, die gaan we moeten veranderen naar sender.get_balance()
-      if (amount <= balance) {
+  int Bank::get_isValid(double amount, Account * account) {
+      if (amount <= account->get_balance()) {
           return 0;
       }
     return 1;

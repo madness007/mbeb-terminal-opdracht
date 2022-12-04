@@ -14,13 +14,10 @@ namespace Banking {
       int payment(double amount, Account * account, Account * to_account);
 
     private:
-      int get_isValid(void) const;
+      int get_isValid(double amount, Account * account);
 
     // Attributes (instance variables)
     private:
-      double amount = 0;
-      int id;
-      int to_id;
       std::string _bankname;
       
 

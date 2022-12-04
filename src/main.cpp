@@ -45,7 +45,12 @@ Banking::Account casino(100000, &kbc);
 
 //terminal 1
 void casino_terminal() {
+  printf("jan balance is %.2f\n", jan.get_balance());
+  printf("casino balance is %.2f\n", casino.get_balance());
   terminal1.payment(100, &jan, &casino);
+  printf("jan balance is %.2f\n", jan.get_balance());
+  printf("casino balance is %.2f\n", casino.get_balance());
+
     
 }
 

@@ -5,7 +5,7 @@ namespace Banking {
 
   Account::Account(double balance, Bank * bank) {
     this->balance = balance;
-    this->_bank = bank;
+    this->bank = bank;
   }
 
   void Account::add_balance(double amount) {

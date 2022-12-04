@@ -10,7 +10,7 @@ namespace Banking {
   }
 
   void payment(double amount,  Account * account, Account * to_account) {
-      to_account.()
+      account->bank->payment(amount, account, to_account);
   }
 
 };

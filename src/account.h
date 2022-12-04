@@ -17,9 +17,11 @@ namespace Banking {
       double get_balance(void) const;
 
     // Attributes (instance variables)
+    public:
+      Bank * bank;
+
     private:
       double balance = 0;
-      Bank * _bank;
 
   };
 
