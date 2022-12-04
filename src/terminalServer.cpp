@@ -9,7 +9,7 @@ namespace Banking {
       
   }
 
-  void payment(double amount,  Account * account, Account * to_account) {
+  void TerminalServer::payment(double amount,  Account * account, Account * to_account) {
       account->bank->payment(amount, account, to_account);
   }
 
