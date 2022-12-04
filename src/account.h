@@ -1,4 +1,5 @@
 #pragma once
+#include "bank.h"
 
 namespace Banking {
 
@@ -6,19 +7,17 @@ namespace Banking {
 
     // Methods
     public:
-      void create_account(int id);
-      void set_balance(double amount, int id);
+      Account(double balance, Bank * bank);
       void add_balance(double amount, int id);
       void withdraw_balance(double amount, int id);
 
     public:
       double get_balance(void) const;
-      int get_id(void) const; // deze werkt hier nog niet zo goed
 
     // Attributes (instance variables)
     private:
       double balance = 0;
-      int id;
+      Bank * _bank;
 
   };
 

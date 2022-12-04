@@ -53,7 +53,7 @@ int main(void) {
     // }
 
     // testen van account class
-    Banking::Account jan;
+    Banking::Account jan(50, &kbc);
     jan.add_balance(20, 1);
     jan.add_balance(50, 1);
     printf("jan balance is %.2f\n", jan.get_balance());
