@@ -29,32 +29,33 @@ Banking::Terminal terminal7(&terminalServer3);
 Banking::Terminal terminal8(&terminalServer3);
 Banking::Terminal terminal9(&terminalServer3);
 
-Banking::Account jan(1000, &kbc);
-Banking::Account jef(1500, &kbc);
-Banking::Account jos(50, &kbc);
-Banking::Account mark(100000000, &kbc);
-Banking::Account jeanine(10000, &kbc);
+Banking::Account jan("Jan", 1000, &kbc);
+Banking::Account jef("Jef", 1500, &kbc);
+Banking::Account jos("Jos", 50, &kbc);
+Banking::Account mark("Mark", 100000000, &kbc);
+Banking::Account jeanine("Jeanine", 10000, &kbc);
 
-Banking::Account willy(100000000, &belfius);
-Banking::Account john(785, &belfius);
-Banking::Account jacky(-500, &belfius);
-Banking::Account charles(1000000, &belfius);
-Banking::Account piet(15000, &belfius);
+Banking::Account willy("Willy", 100000000, &belfius);
+Banking::Account john("John", 785, &belfius);
+Banking::Account jacky("Jacky", -500, &belfius);
+Banking::Account charles("Charles", 1000000, &belfius);
+Banking::Account piet("Piet", 15000, &belfius);
 
-Banking::Account casino(100000, &kbc);
+Banking::Account casino("Casino", 100000, &kbc);
 
 //terminal 1
 void casino_terminal() {
-  printf("jan balance is %.2f\n", jan.get_balance());
-  printf("casino balance is %.2f\n", casino.get_balance());
+  printf("%s balance is %.2f\n", jan.name.c_str(), jan.get_balance());
+  printf("%s balance is %.2f\n", casino.name.c_str(), casino.get_balance());
   terminal1.payment(100, &jan, &casino);
-  printf("jan balance is %.2f\n", jan.get_balance());
-  printf("casino balance is %.2f\n", casino.get_balance());
+  printf("%s balance is %.2f\n", jan.name.c_str(), jan.get_balance());
+  printf("%s balance is %.2f\n", casino.name.c_str(), casino.get_balance());
 
     
 }
 
 int main(void) {
+    casino_terminal();
     // Banking::Account jan(50, &kbc);
     // kbc.propose_payment(39.99, 1234, 4555);
     // if (kbc.get_isValid()) {

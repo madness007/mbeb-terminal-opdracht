@@ -1,9 +1,11 @@
 #include "account.h"
 #include "bank.h"
+#include <string>
 
 namespace Banking {
 
-  Account::Account(double balance, Bank * bank) {
+  Account::Account(std::string name, double balance, Bank * bank) {
+    this->name = name;
     this->balance = balance;
     this->bank = bank;
   }
