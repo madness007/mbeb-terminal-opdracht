@@ -13,10 +13,11 @@ namespace Banking {
     if (get_isValid(amount, account) == 0) {
         account->withdraw_balance(amount);
         to_account->add_balance(amount); // TODO bank kiezen eerst
+        _sem.release();
         return 0; //goedgekeurd
     }
-    return 1; //niet goedgekeurd
     _sem.release();
+    return 1; //niet goedgekeurd
   }
 
   int Bank::get_isValid(double amount, Account * account) {

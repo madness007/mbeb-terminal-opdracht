@@ -75,13 +75,13 @@ void pizzahut_terminal() {
   terminal4.payment(10.99, &jan, &pizzahut);
   // ThisThread::sleep_for(chrono::seconds(rand()%5));
   terminal4.payment(10.99, &jef, &pizzahut);
-  // ThisThread::sleep_for(chrono::seconds(rand()%5));
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
   terminal4.payment(10.99, &jacky, &pizzahut);
-  // ThisThread::sleep_for(chrono::seconds(rand()%5));
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
   terminal4.payment(10.99, &jeanine, &pizzahut);
   // ThisThread::sleep_for(chrono::seconds(rand()%5));
   terminal4.payment(10.99, &charles, &pizzahut);
-  // ThisThread::sleep_for(chrono::seconds(rand()%5));
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
   terminal4.payment(500, &pizzahut, &jos);
 
 }
