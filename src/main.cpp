@@ -48,8 +48,10 @@ Banking::Account pizzahut("Pizza-Hut", 100000, &belfius);
 
 //terminal 1
 void casino_terminal() {
+  // terminal.payment(amount, from, to)
   ThisThread::sleep_for(chrono::seconds(rand()%5));
   terminal1.payment(100, &jan, &casino);
+  
 
 }
 
@@ -88,7 +90,7 @@ void pizzahut_terminal() {
 
 int main(void) {
     // casino_terminal();
-    // bordeel_terminal();
+    bordeel_terminal();
     pizzahut_terminal();
 
     // Banking::Account jan(50, &kbc);
