@@ -161,6 +161,7 @@ void klok() {
     uint8_t clock = 23;
     while (true)
     {
+      printf("%d:00\n\r", clock);
       if (clock == 22) {
         printf("het is 22 uur\r\n");
         kbc.handle_payments();
@@ -190,7 +191,6 @@ void klok() {
       }
 
       ThisThread::sleep_for(11s);
-      printf("%d:00\n\r", clock);
       clock++;
       clock = clock %24;
     }
