@@ -17,8 +17,6 @@ rtos::Thread thr_terminal6;
 rtos::Thread thr_terminal7;
 rtos::Thread thr_terminal8;
 rtos::Thread thr_terminal9;
-rtos::Thread thr_kbc;
-rtos::Thread thr_belfius;
 rtos::Thread thr_klok;
 
 Banking::Bank kbc("kbc");
