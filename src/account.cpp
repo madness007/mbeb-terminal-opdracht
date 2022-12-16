@@ -18,8 +18,20 @@ namespace Banking {
     this->balance -= amount;
   }
 
-  double Account::get_balance(void) const {
+  void Account::append_credit(double amount) {
+    this->credit_to_add += amount;
+  }
+
+  double Account::get_balance(void) {
     return balance;
+  }
+
+  double Account::get_credit(void) {
+    return credit_to_add;
+  }
+
+  void Account::clear_credit(void) {
+    credit_to_add = 0;
   }
 
 };
