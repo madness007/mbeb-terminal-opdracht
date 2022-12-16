@@ -160,7 +160,7 @@ void klok() {
     // 24u klok in 5 minuten simuleren:
     // Meeste betalingen tussen 7u en 20u
     // Overzetting geld tussen banken: 20u - 7u
-    uint8_t clock = 0;
+    uint8_t clock = 23;
     while (true)
     {
       switch (clock) {
@@ -170,7 +170,7 @@ void klok() {
         belfius.handle_payments();
         break;
       }
-      ThisThread::sleep_for(12s);
+      ThisThread::sleep_for(1s);
       printf("%d:00\n\r", clock);
       clock++;
       clock = clock %24;

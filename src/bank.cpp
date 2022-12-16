@@ -49,13 +49,16 @@ namespace Banking {
     // this method runs at night.
     // it pops an account from the vector. and processes the payment.
     // this verctor holds all the accounts that needs payment processing.
+    printf("%s handle payment started", bankname.c_str());
     while (!_vector.empty()) {
       Account * account = _vector.back();
       _sem.acquire();   
       account->add_balance(account->get_credit());
+      printf("%s balance adder", bankname.c_str());
       account->clear_credit();
       _vector.pop_back();
       _sem.release();
+      printf("%s processed", bankname.c_str());
     }
   }
 
