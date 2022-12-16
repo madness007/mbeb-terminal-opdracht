@@ -166,23 +166,16 @@ void klok() {
     while (true)
     {
       switch (clock) {
-      case 7:
-        printf("het is 7 uur");
-        break;
-      case 20:
-        printf("het is 20 uur");
-        break;
       case 22:
       printf("het is 22 uur");
-        // thr_kbc.start();
-        // thr_belfius.start();
+        thr_kbc.start(kbc.handle_payments);
+        thr_belfius.start(belfius.handle_payments);
         break;
-      case 25:
-        clock = 0;
       }
       ThisThread::sleep_for(1s);
-      printf("%d:00\n\r", clock); // Als het klaar is niet meer printen
+      printf("%d:00\n\r", clock);
       clock++;
+      clock = clock %24;
     }
 }
 
