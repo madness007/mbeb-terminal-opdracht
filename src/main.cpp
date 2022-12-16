@@ -178,11 +178,18 @@ void waterbeer_terminal() {
 }
 
 void prowifi_terminal() {
-  while (true) {
+    // installatie
     event_flags.wait_all(FLAG_PROWIFI);
     terminal9.payment(rand() % 50 + 175, &jeanine, &prowifi);
     ThisThread::sleep_for(chrono::seconds(rand()%10));
     terminal9.payment(rand() % 50 + 175, &frietkot, &prowifi);
+    ThisThread::sleep_for(chrono::seconds(rand()%10));
+  while (true) {
+    // abonnement
+    event_flags.wait_all(FLAG_PROWIFI);
+    terminal9.payment(2.99, &jeanine, &prowifi);
+    ThisThread::sleep_for(chrono::seconds(rand()%10));
+    terminal9.payment(2.99, &frietkot, &prowifi);
     ThisThread::sleep_for(chrono::seconds(rand()%10));
   }
 }
@@ -191,7 +198,7 @@ void klok() {
     // 24u klok in 5 minuten simuleren:
     // Meeste betalingen tussen 7u en 20u
     // Overzetting geld tussen banken: 20u - 7u
-    uint8_t clock = 23;
+    uint8_t clock = 23; //starttijd klok, mag een getal tussen 0 en 24 zijn
     while (true)
     {
       printf("%d:00\n\r", clock);
@@ -222,7 +229,7 @@ void klok() {
         break;
       }
 
-      ThisThread::sleep_for(chrono::milliseconds(12500)); // 1 uur duurt 12.5s
+      ThisThread::sleep_for(chrono::milliseconds(12500)); // 1 uur duurt 12.5s (24u in 5min)
       clock++;
       clock = clock %24;
     }
