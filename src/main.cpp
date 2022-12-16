@@ -37,24 +37,62 @@ Banking::Account jeanine("Jeanine", 10000, &kbc);
 
 Banking::Account willy("Willy", 100000000, &belfius);
 Banking::Account john("John", 785, &belfius);
-Banking::Account jacky("Jacky", -500, &belfius);
+Banking::Account jacky("Jacky", 500, &belfius);
 Banking::Account charles("Charles", 1000000, &belfius);
 Banking::Account piet("Piet", 15000, &belfius);
 
 Banking::Account casino("Casino", 100000, &kbc);
+Banking::Account bakker("Bakkerij Bollaert", 100000, &kbc);
+Banking::Account bordeel("Night-Rider", 10000, &kbc);
+Banking::Account pizzahut("Pizza-Hut", 100000, &belfius);
 
 //terminal 1
 void casino_terminal() {
-  printf("%s balance is %.2f\n", jan.name.c_str(), jan.get_balance());
-  printf("%s balance is %.2f\n", casino.name.c_str(), casino.get_balance());
+  // terminal.payment(amount, from, to)
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
   terminal1.payment(100, &jan, &casino);
-  printf("%s balance is %.2f\n", jan.name.c_str(), jan.get_balance());
-  printf("%s balance is %.2f\n", casino.name.c_str(), casino.get_balance());
+  
+
+}
+
+void bakker_terminal() {
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal2.payment(5.99, &jeanine, &bakker);
+}
+
+void bordeel_terminal() {
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal3.payment(600, &willy, &bordeel);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal3.payment(800, &mark, &bordeel);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal3.payment(100, &piet, &bordeel);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal3.payment(1200, &bordeel, &jeanine);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+
+}
+
+void pizzahut_terminal() {
+  terminal4.payment(10.99, &jan, &pizzahut);
+  // ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal4.payment(10.99, &jef, &pizzahut);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal4.payment(10.99, &jacky, &pizzahut);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal4.payment(10.99, &jeanine, &pizzahut);
+  // ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal4.payment(10.99, &charles, &pizzahut);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal4.payment(500, &pizzahut, &jos);
 
 }
 
 int main(void) {
-    casino_terminal();
+    // casino_terminal();
+    bordeel_terminal();
+    pizzahut_terminal();
+
     // Banking::Account jan(50, &kbc);
     // kbc.propose_payment(39.99, 1234, 4555);
     // if (kbc.get_isValid()) {

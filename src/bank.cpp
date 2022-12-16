@@ -14,8 +14,8 @@ namespace Banking {
         payment_transfer(amount, account, to_account);
         return 0; //goedgekeurd
     }
-    return 1; //niet goedgekeurd
     _sem.release();
+    return 1; //niet goedgekeurd
   }
 
   void Bank::payment_transfer(double amount,  Account * account, Account * to_account) {

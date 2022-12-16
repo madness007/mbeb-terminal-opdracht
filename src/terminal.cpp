@@ -8,6 +8,7 @@ namespace Banking {
   }
 
   void Terminal::payment(double amount,  Account * account, Account * to_account) {
-    _server->payment(amount, account, to_account);
+    int payment = _server->payment(amount, account, to_account);
+    printf("€ %.2f van %s -> %s \n%s balance is %.2f, %s balance is %.2f\n", amount, account->name.c_str(), to_account->name.c_str(), account->name.c_str(), account->get_balance(), to_account->name.c_str(), to_account->get_balance());
   }
 };
