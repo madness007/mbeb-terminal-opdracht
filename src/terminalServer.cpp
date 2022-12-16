@@ -10,6 +10,7 @@ namespace Banking {
   }
 
   int TerminalServer::payment(double amount,  Account * account, Account * to_account) {
+    // the terminal server forwards the payment to the bank
     _sem.acquire();
     int payment = account->bank->payment(amount, account, to_account);
     _sem.release();
