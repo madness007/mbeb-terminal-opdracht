@@ -152,8 +152,6 @@ void prowifi_terminal() {
     ThisThread::sleep_for(chrono::seconds(rand()%10));
     terminal9.payment(rand() % 50 + 175, &frietkot, &prowifi);
     ThisThread::sleep_for(chrono::seconds(rand()%10));
-    
-
 }
 
 void klok() {
@@ -163,14 +161,35 @@ void klok() {
     uint8_t clock = 23;
     while (true)
     {
-      switch (clock) {
-      case 22:
-      printf("het is 22 uur");
+      if (clock == 22) {
+        printf("het is 22 uur\r\n");
         kbc.handle_payments();
         belfius.handle_payments();
-        break;
       }
-      ThisThread::sleep_for(1s);
+      switch (clock) {
+        case 4:
+          thr_terminal4.start(bakker_terminal);
+          thr_terminal8.start(waterbeer_terminal);
+        break;
+        case 6:
+          thr_terminal5.start(vis_terminal);
+          thr_terminal6.start(vlees_terminal);
+        break;
+        case 17:
+          thr_terminal3.start(pizzahut_terminal);
+          thr_terminal7.start(frietkot_terminal);
+        break;
+        case 19:
+          thr_terminal9.start(prowifi_terminal);
+        break;
+        case 20:
+          thr_terminal1.start(casino_terminal);
+          thr_terminal2.start(bordeel_terminal);
+        break;
+
+      }
+
+      ThisThread::sleep_for(11s);
       printf("%d:00\n\r", clock);
       clock++;
       clock = clock %24;
@@ -178,16 +197,6 @@ void klok() {
 }
 
 int main(void) {
-
-    thr_terminal1.start(casino_terminal);
-    thr_terminal2.start(bordeel_terminal);
-    thr_terminal3.start(pizzahut_terminal);
-    thr_terminal4.start(bakker_terminal);
-    thr_terminal5.start(vis_terminal);
-    thr_terminal6.start(vlees_terminal);
-    thr_terminal7.start(frietkot_terminal);
-    thr_terminal8.start(waterbeer_terminal);
-    thr_terminal9.start(prowifi_terminal);
     thr_klok.start(klok);
     
 
