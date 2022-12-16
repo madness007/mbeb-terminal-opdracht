@@ -7,11 +7,15 @@
 #include "terminal.h"
 #include "terminalServer.h"
 
-rtos::Thread thr_terminalServer1;
-rtos::Thread thr_terminalServer2;
-rtos::Thread thr_terminalServer3;
-rtos::Thread thr_belfius;
-rtos::Thread thr_kbc;
+rtos::Thread thr_terminal1;
+rtos::Thread thr_terminal2;
+rtos::Thread thr_terminal3;
+rtos::Thread thr_terminal4;
+rtos::Thread thr_terminal5;
+rtos::Thread thr_terminal6;
+rtos::Thread thr_terminal7;
+rtos::Thread thr_terminal8;
+rtos::Thread thr_terminal9;
 
 Banking::Bank kbc("kbc");
 Banking::Bank belfius("belfius");
@@ -46,6 +50,9 @@ Banking::Account casino("Casino", 100000, &kbc);
 Banking::Account bakker("Bakkerij Bollaert", 100000, &kbc);
 Banking::Account bordeel("Night-Rider", 10000, &kbc);
 Banking::Account pizzahut("Pizza-Hut", 100000, &belfius);
+Banking::Account frietkot("Frida Kroket", 10000, &kbc);
+Banking::Account waterbeer("De Waterbeer", 100000, &kbc);
+Banking::Account prowifi("Arno Schoutteten", 10000, &belfius);
 
 //terminal 1
 void casino_terminal() {
@@ -97,10 +104,70 @@ void pizzahut_terminal() {
 
 }
 
+void vis_terminal() {
+    terminal5.payment(rand() % 10 + 8.99, &piet, &jef);
+    ThisThread::sleep_for(chrono::seconds(rand()%5));
+    terminal5.payment(rand() % 10 + 8.99, &jan, &jef);
+    ThisThread::sleep_for(chrono::seconds(rand()%5));
+    terminal5.payment(rand() % 10 + 8.99, &mark, &jef);
+    ThisThread::sleep_for(chrono::seconds(rand()%5));
+    
+
+}
+
+
+void vlees_terminal() {
+    terminal6.payment(rand() % 10 + 8.99, &piet, &charles);
+    ThisThread::sleep_for(chrono::seconds(rand()%5));
+    terminal6.payment(rand() % 10 + 8.99, &jan, &charles);
+    ThisThread::sleep_for(chrono::seconds(rand()%5));
+    terminal6.payment(rand() % 10 + 8.99, &mark, &charles);
+    ThisThread::sleep_for(chrono::seconds(rand()%5));
+    
+
+}
+
+void frietkot_terminal() {
+    terminal7.payment(rand() % 10 + 8.99, &charles, &frietkot);
+    ThisThread::sleep_for(chrono::seconds(rand()%5));
+    terminal7.payment(rand() % 10 + 8.99, &jef, &frietkot);
+    ThisThread::sleep_for(chrono::seconds(rand()%5));
+    terminal7.payment(rand() % 10 + 8.99, &willy, &frietkot);
+    ThisThread::sleep_for(chrono::seconds(rand()%5));
+
+}
+
+void waterbeer_terminal() {
+    terminal8.payment(rand() % 100 + 400, &mark , &waterbeer);
+    ThisThread::sleep_for(chrono::seconds(rand()%10));
+    terminal8.payment(rand() % 100 + 400, &willy, &waterbeer);
+    ThisThread::sleep_for(chrono::seconds(rand()%10));
+
+}
+
+void prowifi_terminal() {
+    terminal9.payment(rand() % 50 + 175, &jeanine, &prowifi);
+    ThisThread::sleep_for(chrono::seconds(rand()%10));
+    terminal9.payment(rand() % 50 + 175, &frietkot, &prowifi);
+    ThisThread::sleep_for(chrono::seconds(rand()%10));
+    
+
+}
+
 int main(void) {
-    casino_terminal();
-    bordeel_terminal();
-    pizzahut_terminal();
+
+    thr_terminal1.start(casino_terminal);
+    thr_terminal2.start(bordeel_terminal);
+    thr_terminal3.start(pizzahut_terminal);
+    thr_terminal4.start(bakker_terminal);
+    thr_terminal5.start(vis_terminal);
+    thr_terminal6.start(vlees_terminal);
+    thr_terminal7.start(frietkot_terminal);
+    thr_terminal8.start(waterbeer_terminal);
+    thr_terminal9.start(prowifi_terminal);
+    
+
+
 
     // Banking::Account jan(50, &kbc);
     // kbc.propose_payment(39.99, 1234, 4555);
