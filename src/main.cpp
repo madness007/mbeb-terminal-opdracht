@@ -17,6 +17,8 @@ rtos::Thread thr_terminal6;
 rtos::Thread thr_terminal7;
 rtos::Thread thr_terminal8;
 rtos::Thread thr_terminal9;
+rtos::Thread thr_kbc;
+rtos::Thread thr_belfius;
 rtos::Thread thr_klok;
 
 Banking::Bank kbc("kbc");
@@ -169,6 +171,11 @@ void klok() {
         break;
       case 20:
         printf("het is 20 uur");
+        break;
+      case 22:
+      printf("het is 22 uur");
+        thr_kbc.start();
+        thr_belfius.start();
         break;
       case 25:
         clock = 0;
