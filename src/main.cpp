@@ -166,8 +166,8 @@ void klok() {
       switch (clock) {
       case 22:
       printf("het is 22 uur");
-        thr_kbc.start(kbc.handle_payments);
-        thr_belfius.start(belfius.handle_payments);
+        kbc.handle_payments();
+        belfius.handle_payments();
         break;
       }
       ThisThread::sleep_for(1s);
