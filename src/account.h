@@ -13,9 +13,12 @@ namespace Banking {
       Account(std::string name, double balance, Bank * bank);
       void add_balance(double amount);
       void withdraw_balance(double amount);
+      void append_credit(double amount);
+      void clear_credit(void);
 
     public:
-      double get_balance(void) const;
+      double get_balance(void);
+      double get_credit(void);
 
     // Attributes (instance variables)
     public:
@@ -24,6 +27,7 @@ namespace Banking {
 
     private:
       double balance = 0;
+      double credit_to_add = 0;
 
   };
 

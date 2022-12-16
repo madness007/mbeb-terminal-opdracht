@@ -6,6 +6,7 @@ namespace Banking {
 
   Bank::Bank(std::string bankname) : _sem(2), _vector(1)  {
     this->bankname = bankname;
+    _vector.clear();
   }
 
   int Bank::payment(double amount,  Account * account, Account * to_account) {
@@ -21,15 +22,11 @@ namespace Banking {
   void Bank::payment_transfer(double amount,  Account * account, Account * to_account) {
     account->withdraw_balance(amount);
     if (this->bankname == to_account->bank->bankname) {
-      to_account->add_balance(amount); // TODO bank kiezen eerst
+      to_account->add_balance(amount);
     }
     else {
-      struct Message {
-        double amount = amount;
-        Account * account = account;
-        Account * to_account = to_account;
-      };
-      
+      to_account->append_credit(amount);
+      to_account->bank->_vector.push_back(to_account);
     }
   }
 
@@ -39,4 +36,16 @@ namespace Banking {
       }
     return 1;
   }
+
+  void Bank::handle_payments() {
+    while (!_vector.empty()) {
+      Account * account = _vector.back();
+      _sem.acquire();   
+      account->add_balance(account->get_credit());
+      account->clear_credit();
+      _vector.pop_back();
+      _sem.release();
+    }
+  }
+
 };

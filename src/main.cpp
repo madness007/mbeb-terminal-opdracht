@@ -193,33 +193,5 @@ int main(void) {
     thr_klok.start(klok);
     
 
-
-
-    // Banking::Account jan(50, &kbc);
-    // kbc.propose_payment(39.99, 1234, 4555);
-    // if (kbc.get_isValid()) {
-    //     printf("Betaling goedgekeurd.\n\r");
-    // } else {
-    //     printf("Saldo ontoereikend.\n");
-    // }
-
-    // kbc.propose_payment(89.99, 1234, 4555);
-    // if (kbc.get_isValid()) {
-    //     printf("Betaling goedgekeurd.\n\r");
-    // } else {
-    //     printf("Saldo ontoereikend.\n");
-    // }
-
-    // testen van account class
-    // Banking::Account jan(50, &kbc);
-    // jan.add_balance(20);
-    // jan.add_balance(50);
-    // printf("jan balance is %.2f\n", jan.get_balance());
-    // jan.withdraw_balance(3.99);
-    // printf("jan balance is %.2f\n", jan.get_balance());
-    
-
-
-
     return 0;
 }
