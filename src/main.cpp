@@ -170,7 +170,7 @@ void klok() {
         belfius.handle_payments();
         break;
       }
-      ThisThread::sleep_for(1s);
+      ThisThread::sleep_for(12s);
       printf("%d:00\n\r", clock);
       clock++;
       clock = clock %24;
@@ -179,15 +179,15 @@ void klok() {
 
 int main(void) {
 
-    // thr_terminal1.start(casino_terminal);
-    // thr_terminal2.start(bordeel_terminal);
-    // thr_terminal3.start(pizzahut_terminal);
-    // thr_terminal4.start(bakker_terminal);
-    // thr_terminal5.start(vis_terminal);
-    // thr_terminal6.start(vlees_terminal);
-    // thr_terminal7.start(frietkot_terminal);
-    // thr_terminal8.start(waterbeer_terminal);
-    // thr_terminal9.start(prowifi_terminal);
+    thr_terminal1.start(casino_terminal);
+    thr_terminal2.start(bordeel_terminal);
+    thr_terminal3.start(pizzahut_terminal);
+    thr_terminal4.start(bakker_terminal);
+    thr_terminal5.start(vis_terminal);
+    thr_terminal6.start(vlees_terminal);
+    thr_terminal7.start(frietkot_terminal);
+    thr_terminal8.start(waterbeer_terminal);
+    thr_terminal9.start(prowifi_terminal);
     thr_klok.start(klok);
     
 
