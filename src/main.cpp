@@ -1,6 +1,7 @@
 #include "mbed.h"
 #include "rtos.h"
 #include <chrono>
+#include <cstdlib>
 #include "bank.h"
 #include "account.h"
 #include "terminal.h"
@@ -32,10 +33,10 @@ Banking::Terminal terminal9(&terminalServer3);
 Banking::Account jan("Jan", 1000, &kbc);
 Banking::Account jef("Jef", 1500, &kbc);
 Banking::Account jos("Jos", 50, &kbc);
-Banking::Account mark("Mark", 100000000, &kbc);
+Banking::Account mark("Mark Coucke", 100000000, &kbc);
 Banking::Account jeanine("Jeanine", 10000, &kbc);
 
-Banking::Account willy("Willy", 100000000, &belfius);
+Banking::Account willy("Willy Naessens", 100000000, &belfius);
 Banking::Account john("John", 785, &belfius);
 Banking::Account jacky("Jacky", 500, &belfius);
 Banking::Account charles("Charles", 1000000, &belfius);
@@ -50,46 +51,54 @@ Banking::Account pizzahut("Pizza-Hut", 100000, &belfius);
 void casino_terminal() {
   // terminal.payment(amount, from, to)
   ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal1.payment(100, &jan, &casino);
+  terminal1.payment(rand() % 100 + 50, &jan, &casino);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal1.payment(rand() % 200 + 50, &jef, &casino);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal1.payment(rand() % 200 + 50, &jef, &casino);
   
 
 }
 
 void bakker_terminal() {
   ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal2.payment(5.99, &jeanine, &bakker);
+  terminal2.payment(rand() % 9 + 1.99, &jeanine, &bakker);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal2.payment(rand() % 9 + 1.99, &mark, &bakker);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal2.payment(rand() % 9 + 1.99, &charles, &bakker);
 }
 
 void bordeel_terminal() {
   ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal3.payment(600, &willy, &bordeel);
+  terminal3.payment(rand() % 200 + 600, &willy, &bordeel);
   ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal3.payment(800, &mark, &bordeel);
+  terminal3.payment(rand() % 200 + 800, &mark, &bordeel);
   ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal3.payment(100, &piet, &bordeel);
+  terminal3.payment(rand() % 200 + 100, &piet, &bordeel);
   ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal3.payment(1200, &bordeel, &jeanine);
+  terminal3.payment(1300, &bordeel, &jeanine);
   ThisThread::sleep_for(chrono::seconds(rand()%5));
 
 }
 
 void pizzahut_terminal() {
-  terminal4.payment(10.99, &jan, &pizzahut);
-  // ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal4.payment(10.99, &jef, &pizzahut);
+  terminal4.payment(rand() % 10 + 8.99, &jan, &pizzahut);
   ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal4.payment(10.99, &jacky, &pizzahut);
+  terminal4.payment(rand() % 10 + 8.99, &jef, &pizzahut);
   ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal4.payment(10.99, &jeanine, &pizzahut);
-  // ThisThread::sleep_for(chrono::seconds(rand()%5));
-  terminal4.payment(10.99, &charles, &pizzahut);
+  terminal4.payment(rand() % 10 + 8.99, &jacky, &pizzahut);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal4.payment(rand() % 10 + 8.99, &jeanine, &pizzahut);
+  ThisThread::sleep_for(chrono::seconds(rand()%5));
+  terminal4.payment(rand() % 10 + 8.99, &charles, &pizzahut);
   ThisThread::sleep_for(chrono::seconds(rand()%5));
   terminal4.payment(500, &pizzahut, &jos);
 
 }
 
 int main(void) {
-    // casino_terminal();
+    casino_terminal();
     bordeel_terminal();
     pizzahut_terminal();
 
