@@ -174,8 +174,8 @@ void klok() {
         break;
       case 22:
       printf("het is 22 uur");
-        thr_kbc.start();
-        thr_belfius.start();
+        // thr_kbc.start();
+        // thr_belfius.start();
         break;
       case 25:
         clock = 0;
